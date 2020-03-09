@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+  <div class="jumbotron">
+
+      <form  method="POST" action = "" enctype="multipart/form-data">
+            {# This hidden_tag is a CSRF security feature. #}
+            {{ form.hidden_tag() }}
+
+          {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+            {% endfor %}
+          {% endif %}
+     {% endwith %}
+
+
+              {% for error in form.errors %}
+                <div class="alert alert-danger alert-dismissible">
+                     <p><i class="icon fas fa-ban"></i> Alert!</p>
+                         {{ error }} invalid
+                </div>
+            {% endfor %}
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ form.email.label(class="form-group col-md-6") }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form.cellphone.label(class="form-group col-md-6") }}
+            {{ form.cellphone(class="form-control") }}
+        </div>
+      </div>
+
+      <div  class="form-row">
+        <div class="form-group col-md-6">
+            {{ form.username.label(class="form-group col-md-6") }}
+            {{ form.username(class="form-control") }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form.last_name.label(class="form-group col-md-6") }}
+            {{ form.last_name(class="form-control") }}
+        </div>
+      </div>
+      <div  class="form-row">
+        <div class="form-group col-md-6">
+            {{ form.password.label(class="form-group col-md-6") }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form.pass_confirm.label(class="form-group col-md-6") }}
+            {{ form.pass_confirm(class="form-control") }}
+        </div>
+      </div>
+
+     <div  class="form-row">
+        <div class="form-group col-md-3">
+             {{ form.enrollment.label(class="form-group col-md-3") }} <br>
+             {{ form.enrollment(class="form-control") }}
+        </div>
+        <div class="form-group col-md-3">
+             {{ form.level.label(class="form-group col-md-3") }} <br>
+             {{form.level(class="form-control")}}
+        </div>
+         <div class="form-group col-md-3">
+             {{ form.franchise.label(class="form-group col-md-3") }} <br>
+             {{ form.franchise(class="form-control") }}
+         </div>
+         <div class="form-group col-md-3">
+             {{ form.age.label(class="form-group col-md-3") }} <br>
+             {{ form.age(class="form-control") }}
+         </div>
+
+     </div>
+         <br>
+        <div class="form-row">
+            <div>
+                {{ form.notifications(class="form-control") }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.notifications.label(class="form-group") }}
+            </div>
+        </div>
+
+         <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+
+      </form>
+  </div>
+</div>
+{% endblock %}

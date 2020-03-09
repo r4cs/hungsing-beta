@@ -1,4 +1,4 @@
- # notificadorHSteste/__init__.py
+ # notificadorHSproject/__init__.py
 
 import os
 from flask import Flask
@@ -51,9 +51,9 @@ login_manager.login_view = "users.login"
 
 # Import these at the top if you want
 # We've imported them here for easy reference
-from notificadorHSteste.users.views import users
-from notificadorHSteste.core.views import core
-from notificadorHSteste.error_pages.handlers import error_pages
+from notificadorHSproject.users.views import users
+from notificadorHSproject.core.views import core
+from notificadorHSproject.error_pages.handlers import error_pages
 
 # Register the apps
 app.register_blueprint(users)

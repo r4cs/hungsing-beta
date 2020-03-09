@@ -1,8 +1,5 @@
 import os
 from notificadorHSproject import app
-
-os.environ['DATABASE_URL'] = "postgres://zxqyvveypxgjuj:922e4159152ba1013a5c0bc4e2710e2b550f8467864b17e925435d744535f951@ec2-34-192-30-15.compute-1.amazonaws.com:5432/d6beobe9ouo427"
-
 # OBS:
 
 # os.environ.get('') => localiza pela value daqui, que tb eh key quando em exports, ex:

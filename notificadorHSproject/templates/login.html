@@ -6,11 +6,13 @@
 
     <div class="jumbotron">
 
-        {{ if session['logged_in'] }}
+        {% if session['logged_in'] %}
 
-            You're logged in already!
+            <div class="form-group col-md-4">
+                <p>You're logged in already!</p>
+            </div>
 
-        {{ else }}
+        {% else %}
 
             <div class="form-row">
 
@@ -35,5 +37,5 @@
     </div>
 </form>
 
-
+{% endif %}
 {% endblock %}

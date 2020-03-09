@@ -1,6 +1,6 @@
 import smtplib
 from email.mime.text import MIMEText
-from notificadorHSteste import app
+from notificadorHSproject import app
 
 
 def activate_mail(email, link):

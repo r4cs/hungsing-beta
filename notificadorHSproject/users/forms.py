@@ -6,7 +6,7 @@ from wtforms import ValidationError
 
 # User Based Imports
 from flask_login import current_user
-from notificadorHSteste.models import User
+from notificadorHSproject.models import User
 
 
 class LoginForm(FlaskForm):

@@ -1,4 +1,4 @@
-# notificadorHSteste/decorators.py
+# notificadorHSproject/decorators.py
 
 from functools import wraps
 

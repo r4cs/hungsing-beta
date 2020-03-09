@@ -1,4 +1,4 @@
-# notificadorHSteste/core/views.py
+# notificadorHSproject/core/views.py
 
 from flask import render_template,request,Blueprint
 

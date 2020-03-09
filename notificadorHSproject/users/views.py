@@ -1,4 +1,4 @@
-# notificadorHSteste/users/views.py
+# notificadorHSproject/users/views.py
 
 import datetime
 import time
@@ -6,11 +6,11 @@ import time
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 
-from notificadorHSteste import db, app
-from notificadorHSteste.models import User
-from notificadorHSteste.users.forms import RegistrationForm, LoginForm, UpdateUserForm, DeleteUserForm
-from notificadorHSteste.email_sender import activate_mail, send_mail
-from notificadorHSteste.decorators import check_confirmed
+from notificadorHSproject import db, app
+from notificadorHSproject.models import User
+from notificadorHSproject.users.forms import RegistrationForm, LoginForm, UpdateUserForm, DeleteUserForm
+from notificadorHSproject.email_sender import activate_mail, send_mail
+from notificadorHSproject.decorators import check_confirmed
 
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 serializer = URLSafeTimedSerializer(app.config.get('SECRET_KEY'))

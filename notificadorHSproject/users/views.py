@@ -82,11 +82,6 @@ def login():
 
             return redirect(next)
 
-    elif current_user.is_authenticated():
-        flash('Você está logado!')
-        time.sleep(5)
-        return render_template('index.html')
-
     return render_template('login.html', form=form)
 
 

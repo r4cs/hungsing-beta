@@ -7,6 +7,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <meta charset="utf-8">
    <title>Notificador Hung Sing Kung Fu Academy</title>
 
@@ -25,9 +27,6 @@
 
     <div class="container" align="center">
         <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('core.index') }}">Página principal</a>
-            </li>
 
                 {% if current_user.confirmed and  current_user.is_authenticated %}
             <li class="nav-link"><a href="{{ url_for('users.logout') }}">Sair</a></li>
@@ -36,6 +35,7 @@
                 {% elif current_user.is_authenticated %}
             <li class="nav-link"><a href="{{ url_for('users.unconfirmed') }}">Confirmar conta</a></li>
                 {% else %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('core.index') }}">Página principal</a></li>
             <li class="nav-link"><a href="{{ url_for('users.login') }}">Entrar</a></li>
             <li class="nav-link"><a href="{{ url_for('users.register') }}">Registre-se</a></li>
                 {% endif %}

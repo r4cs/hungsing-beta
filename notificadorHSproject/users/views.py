@@ -99,7 +99,7 @@ def confirm_email(token):
     if user.email == email:
         user.confirmed = True
         db.session.commit()
-        flash("Você confirmou sua conta !", "success")
+        # flash("Você confirmou sua conta !", "success")
         send_mail(user.username, user.email, user.password)
         time.sleep(3)
         return render_template('index.html')

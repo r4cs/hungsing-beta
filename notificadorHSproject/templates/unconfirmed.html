@@ -20,9 +20,9 @@
             <h1>Bem Vindx!</h1>
             <br>
             <p>Você ainda não confirmou sua conta !</p>
-            <p>Por favor confira seu email e caixa de spam  (:</p>
+            <p>Por favor confira sua caixa de email e spam  (:</p>
             <br>
-            <p>Não recebeu o email? <a href="/">Reenviar</a>.</p>
+            <p>Não recebeu o email? <a href="{{ url_for('users.resend_confirmation') }}">Reenviar</a>.</p>
         </div>
     </div>
 </div>

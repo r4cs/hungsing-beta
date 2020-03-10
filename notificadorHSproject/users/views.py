@@ -128,7 +128,7 @@ def resend_confirmation():
     activate_mail(current_user.email, link)
     flash('Um email de confirmação foi enviado para seu email.', 'success')
     time.sleep(3)
-    return redirect(url_for('user.unconfirmed'))
+    return redirect(url_for('users.unconfirmed'))
 
 
 @users.route("/logout")

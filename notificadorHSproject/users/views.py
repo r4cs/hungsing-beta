@@ -2,8 +2,7 @@
 
 import datetime
 import time
-
-from flask import render_template, url_for, flash, redirect, request, Blueprint
+from flask import render_template, url_for, flash, redirect, request, Blueprint, session
 from flask_login import login_user, current_user, logout_user, login_required
 
 from notificadorHSproject import db, app
@@ -21,7 +20,6 @@ users = Blueprint('users', __name__)
 @users.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    print(form)
 
     if form.validate_on_submit():  # and form.franchise.data == 'pin':
         user = User(email=request.form['email'],
@@ -38,9 +36,7 @@ def register():
         print(user)
 
         db.session.add(user)
-        print('executou db.session.add(user)')
         db.session.commit()
-        print('executou db.session.commit()')
 
         token = serializer.dumps(user.email, salt=app.config['PASSWORD_SALT'])
         link = url_for('users.confirm_email', token=token, _external=True)
@@ -61,6 +57,7 @@ def register():
 @users.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    session = session.get('logged_in')
 
     if form.validate_on_submit():
         # Grab the user from our User Models table
@@ -85,6 +82,12 @@ def login():
                 next = url_for('core.index')
 
             return redirect(next)
+
+    elif current_user.is_authenticated():
+        flash('Você está logado!')
+        time.sleep(5)
+        return render_template('index.html')
+
     return render_template('login.html', form=form)
 
 

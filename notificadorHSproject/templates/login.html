@@ -7,7 +7,7 @@
     <div class="jumbotron">
 
         {% if current_user.is_authenticated %}
-            {% redirect(url_for('user.index')) %}
+            {{ redirect(url_for('user.index')) }}
         {% endif %}
 
             <div class="form-row">

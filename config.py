@@ -16,6 +16,7 @@ class BaseConfig(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    app.config['SQLALCHEMY_BINDS'] = {'deleted_users': 'HEROKU_POSTGRESQL_ROSE_URL'}
     app.config['PASSWORD_SALT'] = os.environ.get('SECURITY_PASSWORD_SALT')
 
 

@@ -1,46 +1,55 @@
-
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, PasswordField, SubmitField, SelectField, BooleanField
+from wtforms import StringField, IntegerField, PasswordField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
-
-# User Based Imports
-from flask_login import current_user
 from notificadorHSproject.models import User
 
 
 class LoginForm(FlaskForm):
+
     email = StringField('Email', validators=[DataRequired(), Email()])
+
     password = PasswordField('Password', validators=[DataRequired()])
+
     submit = SubmitField('Log In')
 
 
 class RegistrationForm(FlaskForm):
+
     email = StringField('Email', validators=[DataRequired(), Email()])
+
     enrollment = IntegerField('Matrícula', validators=[DataRequired()])
+
     username = StringField('Nome', validators=[DataRequired()])
-    last_name = StringField('Último nome', validators=[DataRequired()])
+
+    last_name = StringField('Sobrenome', validators=[DataRequired()])
+
     cellphone = StringField('Celular com DDD', validators=[DataRequired()])
 
-    level = SelectField(u'Nível', choices=[('lv1', 'Iniciante'), ('lv2', 'Intermediário'), ('lv3', 'Avançado')],
+    level = SelectField(u'Nível', choices=[
+        ('lv1', 'Iniciante'),
+        ('lv2', 'Intermediário'),
+        ('lv3', 'Avançado')
+    ],
                         validators=[DataRequired()])
 
-    age = SelectField(u'Idade', choices=[('inf', 'Até 13 anos'), ('ado', '14 a 18 anos'), ('jov', '19 a 30 anos'),
-                                                ('adul', '31 a 50 anos'), ('meia_id', '50 a 60 anos'), ('ido', 'Acima de 60')],
-                                                validators=[DataRequired()])
+    age = SelectField(u'Idade', choices=[
+        ('ado', '14 a 18 anos'),
+        ('jov', '19 a 30 anos'),
+        ('adul', '31 a 50 anos'),
+        ('meia_id', '50 a 60 anos'),
+        ('ido', 'Acima de 60')
+    ],
+                      validators=[DataRequired()]
+                      )
 
-    franchise = SelectField(u'Unidade', choices=[('alec', 'Alecrins'), ('f_santana', 'Feira de Santana'),
-                                                 ('gru', 'Guarulhos'), ('join', 'Joinville'), ('lapa', 'Lapa'),
-                                                 ('natal', 'Natal'), ('nv_europa', 'Nova Europa'), ('paca', 'Pacaembu'),
-                                                 ('perd', 'Perdizes'), ('pin', 'Pinheiros'), ('tatu', 'Tatuapé'),
-                                                 ('vl_pru', 'Vila Prudente'), ('vix', 'Vitória')],
-                                                 validators=[DataRequired()])
-
-    password = PasswordField('Senha', validators=[DataRequired(), EqualTo('pass_confirm', message='Passwords Must Match!')])
+    password = PasswordField('Senha', validators=[
+        DataRequired(),
+        EqualTo('pass_confirm', message='As senhas devem coincidir!')
+    ]
+                             )
 
     pass_confirm = PasswordField('Confirmar senha', validators=[DataRequired()])
-
-    notifications = BooleanField('Autorizo receber notificações')
 
     submit = SubmitField('Register!')
 
@@ -49,10 +58,10 @@ class RegistrationForm(FlaskForm):
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('Seu email já está registrado.')
 
-    def check_username(self, field):
+    def check_enrollment(self, field):
         # Check if not None for that username!
-        if User.query.filter_by(username=field.data).first() and User.query.filter_by(last_name=field.data).first():
-            raise ValidationError('Desculpe, usuário existente. Contate a adminstradora.')
+        if User.query.filter_by(enrollment=field.data).first():
+            raise ValidationError('Desculpe, matrícula já cadastrsada. Contate a adminstradora.')
 
 
 class UpdateUserForm(FlaskForm):
@@ -61,22 +70,21 @@ class UpdateUserForm(FlaskForm):
 
     cellphone = StringField('Celular com DDD', validators=[DataRequired()])
 
-    level = SelectField(u'Nível', choices=[('lv1', 'Iniciante'), ('lv2', 'Intermediário'), ('lv3', 'Avançado')],
+    level = SelectField(u'Nível', choices=[
+        ('lv1', 'Iniciante'),
+        ('lv2', 'Intermediário'),
+        ('lv3', 'Avançado')
+    ],
                         validators=[DataRequired()])
 
-    age = SelectField(u'Faixa etária',
-                      choices=[('inf', 'Até 13 anos'), ('ado', '14 a 18 anos'), ('jov', '19 a 30 anos'),
-                               ('adul', '31 a 50 anos'), ('meia_id', '50 a 60 anos'), ('ido', 'Acima de 60')],
-                                validators=[DataRequired()])
-
-    franchise = SelectField(u'Unidade', choices=[('alec', 'Alecrins'), ('f_santana', 'Feira de Santana'),
-                                                 ('gru', 'Guarulhos'), ('join', 'Joinville'), ('lapa', 'Lapa'),
-                                                 ('natal', 'Natal'), ('nv_europa', 'Nova Europa'), ('paca', 'Pacaembu'),
-                                                 ('perd', 'Perdizes'), ('pin', 'Pinheiros'), ('tatu', 'Tatuapé'),
-                                                 ('vl_pru', 'Vila Prudente'), ('vix', 'Vitória')],
-                                                    validators=[DataRequired()])
-
-    notifications = BooleanField('Autorizo receber notificações')
+    age = SelectField(u'Idade', choices=[
+        ('ado', '14 a 18 anos'),
+        ('jov', '19 a 30 anos'),
+        ('adul', '31 a 50 anos'),
+        ('meia_id', '50 a 60 anos'),
+        ('ido', 'Acima de 60')
+    ],
+                      validators=[DataRequired()])
 
     submit = SubmitField('Atualizar')
 

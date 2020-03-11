@@ -9,7 +9,6 @@ from notificadorHSproject import db, app
 from notificadorHSproject.models import User
 from notificadorHSproject.users.forms import RegistrationForm, LoginForm, UpdateUserForm, DeleteUserForm
 from notificadorHSproject.email_sender import activate_mail, send_mail
-from notificadorHSproject.decorators import check_confirmed
 
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 serializer = URLSafeTimedSerializer(app.config.get('SECRET_KEY'))
@@ -29,9 +28,7 @@ def register():
                     age=request.form['age'],
                     level=request.form['level'],
                     cellphone=request.form['cellphone'],
-                    franchise=request.form['franchise'],
                     password=request.form['password'],
-                    notifications=True,
                     confirmed=False)
         print(user)
 
@@ -48,8 +45,6 @@ def register():
         #time.sleep(3)
         return redirect(url_for("users.unconfirmed"))
 
-    elif form.validate_on_submit() and form.franchise.data != 'pin':
-        flash("Oops! Apenas alunos da unidade Pinheiros estão participando deste teste (:")
 
     return render_template('register.html', form=form)
 
@@ -116,7 +111,7 @@ def unconfirmed():
         return redirect(url_for('core.index'))
 
     # return render_template('unconfirmed.html')
-    flash('Você precisa confirmar sua conta para ter acesso!', 'warning')
+    # flash('Você precisa confirmar sua conta para ter acesso!', 'warning')
     time.sleep(3)
     return render_template('unconfirmed.html')
 
@@ -164,19 +159,6 @@ def account():
         db.session.commit()
         flash('Conta atualizada', 'success')
         # return redirect(url_for('users.account'))
-
-    elif form.validate_on_submit() and form.franchise.data != 'pin':
-        flash("Oops! Apenas alunos da unidade Pinheiros estão participando deste teste (:")
-
-    # elif request.method == 'GET':
-    #     # form.username.data = current_user.username
-    #     form.email.data = current_user.email
-    #     current_user.cellphone = form.cellphone.data
-    #     current_user.level = form.level.data
-    #     current_user.age = form.age.data
-    #     current_user.franchise = form.franchise.data
-    #     current_user.notifications = form.notifications.data
-    #     flash('get method shouldn\'t be flashing', 'waning')
 
     return render_template('account.html', form=form)
 

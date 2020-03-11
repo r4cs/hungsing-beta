@@ -182,5 +182,3 @@ def del_account():
         return redirect(url_for('core.index'))
 
     return render_template('del_account.html', del_form=del_form)
-
-User.query.filter_by(email=form.email.data).first()

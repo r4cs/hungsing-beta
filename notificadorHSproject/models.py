@@ -67,7 +67,7 @@ class User(db.Model, UserMixin):
 
 class Del_User(db.Model, UserMixin):
 
-    __tablename__ = 'users'
+    __tablename__ = 'deleted_users'
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)

@@ -65,7 +65,7 @@ class User(db.Model, UserMixin):
         return f'User ID: {self.id}'
 
 
-class Del_User(db.Model, UserMixin):
+class DelUser(db.Model, UserMixin):
 
     __tablename__ = 'deleted_users'
 
@@ -77,7 +77,17 @@ class Del_User(db.Model, UserMixin):
     age = db.Column(db.String(), index=True)
     level = db.Column(db.String(), index=True)
     cellphone = db.Column(db.String, index=True)
-    registered_on = db.Column(db.DateTime, nullable=False)
+    deleted_on = db.Column(db.DateTime, nullable=False)
+
+    def __init__(self, email, enrollment, username, last_name, age, level, cellphone):
+        self.email = email
+        self.enrollment = enrollment
+        self.username = username
+        self.last_name = last_name
+        self.age = age
+        self.level = level
+        self.cellphone = cellphone
+        self.deleted_on = datetime.datetime.now()
 
     def __repr__(self):
         return f"UserName: {self.username}"

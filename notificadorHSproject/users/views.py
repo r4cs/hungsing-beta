@@ -6,7 +6,7 @@ from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 
 from notificadorHSproject import db, app
-from notificadorHSproject.models import User
+from notificadorHSproject.models import User, DelUser
 from notificadorHSproject.users.forms import RegistrationForm, LoginForm, UpdateUserForm, DeleteUserForm
 from notificadorHSproject.email_sender import activate_mail, send_mail
 
@@ -20,7 +20,7 @@ users = Blueprint('users', __name__)
 def register():
     form = RegistrationForm()
 
-    if form.validate_on_submit():  # and form.franchise.data == 'pin':
+    if form.validate_on_submit():
         user = User(email=request.form['email'],
                     enrollment=request.form['enrollment'],
                     username=request.form['username'],
@@ -30,7 +30,6 @@ def register():
                     cellphone=request.form['cellphone'],
                     password=request.form['password'],
                     confirmed=False)
-        print(user)
 
         db.session.add(user)
         db.session.commit()
@@ -143,8 +142,6 @@ def account():
         current_user.cellphone = form.cellphone.data
         current_user.level = form.level.data
         current_user.age = form.age.data
-        current_user.franchise = form.franchise.data
-        current_user.notifications = form.notifications.data
 
         # # current_user.username = form.username.data
         # current_user.email = request.form['email']
@@ -169,8 +166,21 @@ def del_account():
     del_form = DeleteUserForm()
 
     if del_form.validate_on_submit():
-        db.session.delete(current_user)
+        del_users = DelUser(
+            email=current_user.email,
+            enrollment=current_user.enrollment,
+            username=current_user.username,
+            last_name=current_user.last_name,
+            age=current_user.age,
+            level=current_user.level,
+            cellphone=current_user.cellphone
+        )
+
+        db.session.add(del_users, current_user)
+        db.session.delete(users, current_user)
         db.session.commit()
         return redirect(url_for('core.index'))
 
     return render_template('del_account.html', del_form=del_form)
+
+User.query.filter_by(email=form.email.data).first()

@@ -177,7 +177,7 @@ def del_account():
         )
 
         db.session.add(del_users)
-        db.session.delete(users)
+        db.session.delete(current_user)
         db.session.commit()
         return redirect(url_for('core.index'))
 

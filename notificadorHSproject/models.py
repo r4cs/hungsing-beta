@@ -43,11 +43,9 @@ class User(db.Model, UserMixin):
         self.age = age
         self.level = level
         self.cellphone = cellphone
-        self.franchise = franchise
         self.password = password
         self.password_hash = generate_password_hash(password)
         self.registered_on = datetime.datetime.now()
-        self.notifications = notifications
         self.confirmed = confirmed
 
     def check_password(self, password):

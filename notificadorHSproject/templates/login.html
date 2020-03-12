@@ -7,8 +7,8 @@
     <div class="jumbotron">
 
         {% if current_user.is_authenticated %}
-            <h1>HI SEE ME PLEASE</h1>
-            {{ url_for('core.index') }}
+<!--            <h1>HI SEE ME PLEASE</h1>-->
+            {{ redirect(url_for('index')) }}
         {% endif %}
 
             <div class="form-row">

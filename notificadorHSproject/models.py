@@ -27,7 +27,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(64), index=True)
     last_name = db.Column(db.String(), index=True)
     age = db.Column(db.String(), index=True)
-    level = db.Column(db.String(), index=True)
+    begginer = db.Column(db.Boolean)
+    interm = db.Column(db.Boolean)
+    adv = db.Column(db.Boolean)
     cellphone = db.Column(db.String, index=True)
     password = db.Column(db.String(20), index=True)
     password_hash = db.Column(db.String(252), index=True)
@@ -35,13 +37,15 @@ class User(db.Model, UserMixin):
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
 
 
-    def __init__(self, email, enrollment, username, last_name, age, level, cellphone,password, confirmed):
+    def __init__(self, email, enrollment, username, last_name, age, begginer, interm, adv, cellphone,password, confirmed):
         self.email = email
         self.enrollment = enrollment
         self.username = username
         self.last_name = last_name
         self.age = age
-        self.level = level
+        self.begginer = begginer
+        self.interm = interm
+        self.adv = adv
         self.cellphone = cellphone
         self.password = password
         self.password_hash = generate_password_hash(password)
@@ -73,17 +77,21 @@ class DelUser(db.Model, UserMixin):
     username = db.Column(db.String(64), index=True)
     last_name = db.Column(db.String(), index=True)
     age = db.Column(db.String(), index=True)
-    level = db.Column(db.String(), index=True)
+    begginer = db.Column(db.Boolean)
+    interm = db.Column(db.Boolean)
+    adv = db.Column(db.Boolean)
     cellphone = db.Column(db.String, index=True)
     deleted_on = db.Column(db.DateTime, nullable=False)
 
-    def __init__(self, email, enrollment, username, last_name, age, level, cellphone):
+    def __init__(self, email, enrollment, username, last_name, age, begginer, interm, adv, cellphone):
         self.email = email
         self.enrollment = enrollment
         self.username = username
         self.last_name = last_name
         self.age = age
-        self.level = level
+        self.begginer = begginer
+        self.interm = interm
+        self.adv = adv
         self.cellphone = cellphone
         self.deleted_on = datetime.datetime.now()
 

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, PasswordField, SubmitField, SelectField
+from wtforms import StringField, IntegerField, PasswordField, SubmitField, SelectField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
 from notificadorHSproject.models import User
@@ -26,12 +26,18 @@ class RegistrationForm(FlaskForm):
 
     cellphone = StringField('Celular com DDD', validators=[DataRequired()])
 
-    level = SelectField(u'Nível', choices=[
-        ('lv1', 'Iniciante'),
-        ('lv2', 'Intermediário'),
-        ('lv3', 'Avançado')
-    ],
-                        validators=[DataRequired()])
+    # level = BooleanField(u'Nível', choices=[
+    #     ('lv1', 'Iniciante'),
+    #     ('lv2', 'Intermediário'),
+    #     ('lv3', 'Avançado')
+    # ],
+    #                     validators=[DataRequired()])
+
+    begginer = BooleanField(u'Iniciante')
+
+    interm = BooleanField("Intermediário")
+
+    adv = BooleanField("Avançado")
 
     age = SelectField(u'Idade', choices=[
         ('ado', '14 a 18 anos'),

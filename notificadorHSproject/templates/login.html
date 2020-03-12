@@ -7,7 +7,7 @@
     <div class="jumbotron">
 
         {% if current_user.is_authenticated %}
-            {{ redirect(url_for('users.logout')) }}
+            {{ url_for('error_pages.error_403') }}
 
         {% else %}
 

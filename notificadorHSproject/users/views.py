@@ -141,7 +141,9 @@ def account():
         # form.username.data = current_user.username
         form.email.data = current_user.email
         current_user.cellphone = form.cellphone.data
-        current_user.level = form.level.data
+        current_user.begginer = form.begginer.data
+        current_user.interm = form.interm.data
+        current_user.adv = form.adv.data
         current_user.age = form.age.data
 
         # # current_user.username = form.username.data
@@ -173,7 +175,9 @@ def del_account():
             username=current_user.username,
             last_name=current_user.last_name,
             age=current_user.age,
-            level=current_user.level,
+            begginer=request.form['begginer'],
+            interm=request.form['interm'],
+            adv=request.form['adv'],
             cellphone=current_user.cellphone
         )
 

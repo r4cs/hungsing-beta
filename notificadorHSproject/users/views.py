@@ -28,7 +28,7 @@ def register():
                     age=request.form['age'],
                     begginer=request.form['begginer'],
                     interm=request.form['interm'],
-                    adv=request.form['adv']
+                    adv=request.form['adv'],
                     cellphone=request.form['cellphone'],
                     password=request.form['password'],
                     confirmed=False)

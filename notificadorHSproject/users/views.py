@@ -76,7 +76,7 @@ def login():
 
             return redirect(next)
 
-    return render_template('login.html', form=form)
+    return render_template('login.html', form=form, current_user=current_user)
 
 
 @users.route('/confirm_email/<token>')

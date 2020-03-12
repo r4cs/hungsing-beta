@@ -176,8 +176,8 @@ def del_account():
             cellphone=current_user.cellphone
         )
 
-        db.session.add(del_users, current_user)
-        db.session.delete(users, current_user)
+        db.session.add(del_users)
+        db.session.delete(users)
         db.session.commit()
         return redirect(url_for('core.index'))
 

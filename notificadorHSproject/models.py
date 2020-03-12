@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
 
 
-    def __init__(self, email, enrollment, username, last_name, age, level, cellphone, franchise, password, notifications, confirmed):
+    def __init__(self, email, enrollment, username, last_name, age, level, cellphone,password, confirmed):
         self.email = email
         self.enrollment = enrollment
         self.username = username

@@ -86,9 +86,7 @@ def confirm_email(token):
         flash("Conta já confirmada. Faça login", 'success')
         return redirect(url_for('index'))
     email = serializer.loads(token, salt=app.config['PASSWORD_SALT'])
-    print(email)
     user = User.query.filter_by(email=current_user.email).first_or_404()
-    print(user)
 
     if user.email == email:
         user.confirmed = True

@@ -8,7 +8,7 @@
 
         {% if current_user.is_authenticated %}
 <!--            <h1>HI SEE ME PLEASE</h1>-->
-            {{ redirect(url_for('index')) }}
+            {{ render_template('index.html') }}
         {% endif %}
 
             <div class="form-row">

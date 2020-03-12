@@ -8,7 +8,8 @@
 
         {% if current_user.is_authenticated %}
             {{ url_for('users.logout') }}
-        {% endif %}
+
+        {% else %}
 
             <div class="form-row">
 
@@ -33,5 +34,5 @@
     </div>
 </form>
 
-
+{% endif %}
 {% endblock %}

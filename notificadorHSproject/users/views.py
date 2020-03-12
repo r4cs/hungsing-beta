@@ -136,7 +136,7 @@ def logout():
 def account():
     form = UpdateUserForm()
 
-    if form.validate_on_submit() and form.franchise.data == 'pin':
+    if form.validate_on_submit():
         # form.username.data = current_user.username
         form.email.data = current_user.email
         current_user.cellphone = form.cellphone.data

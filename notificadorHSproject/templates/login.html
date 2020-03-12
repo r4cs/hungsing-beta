@@ -7,6 +7,7 @@
     <div class="jumbotron">
 
         {% if current_user.is_authenticated %}
+            <h1>HI SEE ME PLEASE</h1>
             {{ url_for('core.index') }}
         {% endif %}
 

@@ -27,18 +27,18 @@ class RegistrationForm(FlaskForm):
 
     cellphone = StringField('Celular com DDD', validators=[DataRequired()])
 
-    # level = BooleanField(u'Nível', choices=[
+    # level = SelectField(u'Nível', choices=[
     #     ('lv1', 'Iniciante'),
     #     ('lv2', 'Intermediário'),
     #     ('lv3', 'Avançado')
     # ],
     #                     validators=[DataRequired()])
 
-    begginer = BooleanField(u'Iniciante')
-
-    interm = BooleanField(u"Intermediário")
-
-    adv = BooleanField(u"Avançado")
+    # begginer = BooleanField(u'Iniciante')
+    #
+    # interm = BooleanField(u"Intermediário")
+    #
+    # adv = BooleanField(u"Avançado")
 
 
     age = SelectField(u'Idade', choices=[

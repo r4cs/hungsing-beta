@@ -79,12 +79,18 @@ class UpdateUserForm(FlaskForm):
 
     cellphone = StringField('Celular com DDD', validators=[DataRequired()])
 
-    level = SelectField(u'Nível', choices=[
-        ('lv1', 'Iniciante'),
-        ('lv2', 'Intermediário'),
-        ('lv3', 'Avançado')
-    ],
-                        validators=[DataRequired()])
+    begginer = BooleanField(u'Iniciante')
+
+    interm = BooleanField(u"Intermediário")
+
+    adv = BooleanField(u"Avançado")
+
+    # level = SelectField(u'Nível', choices=[
+    #     ('lv1', 'Iniciante'),
+    #     ('lv2', 'Intermediário'),
+    #     ('lv3', 'Avançado')
+    # ],
+    #                     validators=[DataRequired()])
 
     age = SelectField(u'Idade', choices=[
         ('ado', '14 a 18 anos'),

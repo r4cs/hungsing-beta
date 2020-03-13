@@ -33,6 +33,7 @@
             <li class="nav-link"><a href="{{ url_for('users.account') }}">Atualizar Conta</a></li>
             <li class="nav-link"><a href="{{ url_for('users.del_account') }}">Apagar Conta</a></li>
                 {% elif current_user.is_authenticated %}
+            <li class="nav-link"><a href="{{ url_for('users.logout') }}">Sair</a></li>
             <li class="nav-link"><a href="{{ url_for('users.unconfirmed') }}">Confirmar conta</a></li>
                 {% else %}
             <li class="nav-item"><a class="nav-link" href="{{ url_for('core.index') }}">Página principal</a></li>

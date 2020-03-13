@@ -77,21 +77,35 @@
 
            <br> <p>Desejo receber notificações para aulas de:</p>    <br>
 
-     <div  class="form-row">
-        <div class="form-group col-md-4">
-            {{ form.begginer(class="form-control")}}
-                {{ form.begginer.label() }}
-        </div>
-         <div class="form-group col-md-4">
-             {{ form.interm.label() }}
-             {{form.interm(class="form-control")}}
-        </div>
-         <div class="form-group col-md-4">
-             {{ form.adv.label() }}
-             {{form.adv(class="form-control")}}
-        </div>
+<div class="btn-group-toggle"s data-toggle="buttons">
+  <label class="btn btn-secondary active">
+    <input type="checkbox" name="check" value="iniciante"checked autocomplete="off"> Iniciante
+  </label>
+      <label class="btn btn-secondary active">
+    <input type="checkbox" name="check" value="interm" checked autocomplete="off"> Intermediário
+  </label>
+      <label class="btn btn-secondary active">
+    <input type="checkbox" name="check" value="adv" checked autocomplete="off"> Avançado
+  </label>
+</div>
 
-     </div>
+
+<!--     <div  class="form-row">-->
+<!--        <div class="form-group col-md-3">-->
+<!--            {{ form.begginer.label() }}-->
+<!--            {{ form.begginer(class="form-control")}}-->
+<!--        </div>-->
+<!--         <div class="form-group col-md-3">-->
+<!--             {{ form.interm.label() }}-->
+<!--             {{form.interm(class="form-control")}}-->
+<!--        </div>-->
+<!--         <div class="form-group col-md-3">-->
+<!--             {{ form.adv.label() }}-->
+<!--             {{form.adv(class="form-control")}}-->
+<!--        </div>-->
+
+<!--     </div>-->
+
          <br>
 
          <div class="form-group">

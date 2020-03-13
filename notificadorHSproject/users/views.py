@@ -26,9 +26,10 @@ def register():
                     username=request.form['username'],
                     last_name=request.form['last_name'],
                     age=request.form['age'],
-                    begginer=request.form['begginer'],
-                    interm=request.form['interm'],
-                    adv=request.form['adv'],
+                    level=request.form['check'],
+                    # begginer=request.form['begginer'],
+                    # interm=request.form['interm'],
+                    # adv=request.form['adv'],
                     cellphone=request.form['cellphone'],
                     password=request.form['password'],
                     confirmed=False)
@@ -141,9 +142,10 @@ def account():
         # form.username.data = current_user.username
         form.email.data = current_user.email
         current_user.cellphone = form.cellphone.data
-        current_user.begginer = form.begginer.data
-        current_user.interm = form.interm.data
-        current_user.adv = form.adv.data
+        current_user.level = form.level.data
+        # current_user.begginer = form.begginer.data
+        # current_user.interm = form.interm.data
+        # current_user.adv = form.adv.data
         current_user.age = form.age.data
 
         # # current_user.username = form.username.data
@@ -175,9 +177,10 @@ def del_account():
             username=current_user.username,
             last_name=current_user.last_name,
             age=current_user.age,
-            begginer=request.form['begginer'],
-            interm=request.form['interm'],
-            adv=request.form['adv'],
+            level=request.form['check'],
+            # begginer=request.form['begginer'],
+            # interm=request.form['interm'],
+            # adv=request.form['adv'],
             cellphone=current_user.cellphone
         )
 

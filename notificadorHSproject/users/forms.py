@@ -3,6 +3,7 @@ from wtforms import StringField, IntegerField, PasswordField, SubmitField, Selec
 from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
 from notificadorHSproject.models import User
+from flask import request
 
 
 class LoginForm(FlaskForm):
@@ -35,9 +36,11 @@ class RegistrationForm(FlaskForm):
 
     begginer = BooleanField(u'Iniciante')
 
-    interm = BooleanField("Intermediário")
+    interm = BooleanField(u"Intermediário")
 
-    adv = BooleanField("Avançado")
+    adv = BooleanField(u"Avançado")
+
+    # level = request.form.getlist('check')
 
     age = SelectField(u'Idade', choices=[
         ('ado', '14 a 18 anos'),

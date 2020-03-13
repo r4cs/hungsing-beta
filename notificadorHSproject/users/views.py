@@ -26,7 +26,7 @@ def register():
                     username=request.form['username'],
                     last_name=request.form['last_name'],
                     age=request.form['age'],
-                    level=request.form.getlist('check'),
+                    level=request.form.getlist('check[]'),
                     # begginer=request.form['begginer'],
                     # interm=request.form['interm'],
                     # adv=request.form['adv'],

@@ -142,7 +142,7 @@ def account():
         # form.username.data = current_user.username
         form.email.data = current_user.email
         current_user.cellphone = form.cellphone.data
-        current_user.level = form.level.data
+        current_user.level = request.form['check']
         # current_user.begginer = form.begginer.data
         # current_user.interm = form.interm.data
         # current_user.adv = form.adv.data

@@ -40,7 +40,6 @@ class RegistrationForm(FlaskForm):
 
     adv = BooleanField(u"Avançado")
 
-    # level = request.form.getlist('check')
 
     age = SelectField(u'Idade', choices=[
         ('ado', '14 a 18 anos'),

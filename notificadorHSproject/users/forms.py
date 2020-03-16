@@ -34,7 +34,7 @@ class RegistrationForm(FlaskForm):
     # ],
     #                     validators=[DataRequired()])
 
-    begginer = BooleanField(u'Iniciante')
+    beginer = BooleanField(u'Iniciante')
 
     interm = BooleanField(u"Intermediário")
 
@@ -78,7 +78,7 @@ class UpdateUserForm(FlaskForm):
 
     cellphone = StringField('Celular com DDD', validators=[DataRequired()])
 
-    begginer = BooleanField(u'Iniciante')
+    beginer = BooleanField(u'Iniciante')
 
     interm = BooleanField(u"Intermediário")
 

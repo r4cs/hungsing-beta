@@ -24,30 +24,30 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
     enrollment = db.Column(db.Integer, unique=True)
-    username = db.Column(db.String(64), index=True)
-    last_name = db.Column(db.String(), index=True)
-    age = db.Column(db.String(), index=True)
-    level = db.Column(db.String())
-    # begginer = db.Column(db.Boolean)
-    # interm = db.Column(db.Boolean)
-    # adv = db.Column(db.Boolean)
-    cellphone = db.Column(db.String, index=True)
-    password = db.Column(db.String(20), index=True)
-    password_hash = db.Column(db.String(252), index=True)
+    username = db.Column(db.String(64))
+    last_name = db.Column(db.String())
+    age = db.Column(db.String())
+    # level = db.Column(db.String())
+    beginer = db.Column(db.Boolean)
+    interm = db.Column(db.Boolean)
+    adv = db.Column(db.Boolean)
+    cellphone = db.Column(db.String, unique=True)
+    password = db.Column(db.String(20))
+    password_hash = db.Column(db.String(252))
     registered_on = db.Column(db.DateTime, nullable=False)
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
 
 
-    def __init__(self, email, enrollment, username, last_name, age,level, cellphone,password, confirmed): # begginer, interm, adv,
+    def __init__(self, email, enrollment, username, last_name, age, beginer, interm, adv, cellphone,password, confirmed): # level
         self.email = email
         self.enrollment = enrollment
         self.username = username
         self.last_name = last_name
         self.age = age
-        self.level = level
-        # self.begginer = begginer
-        # self.interm = interm
-        # self.adv = adv
+        # self.level = level
+        self.beginer = beginer
+        self.interm = interm
+        self.adv = adv
         self.cellphone = cellphone
         self.password = password
         self.password_hash = generate_password_hash(password)
@@ -76,26 +76,26 @@ class DelUser(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
     enrollment = db.Column(db.Integer, unique=True)
-    username = db.Column(db.String(64), index=True)
-    last_name = db.Column(db.String(), index=True)
-    age = db.Column(db.String(), index=True)
-    level = db.Column(db.String())
-    # begginer = db.Column(db.Boolean)
-    # interm = db.Column(db.Boolean)
-    # adv = db.Column(db.Boolean)
-    cellphone = db.Column(db.String, index=True)
+    username = db.Column(db.String(64))
+    last_name = db.Column(db.String())
+    age = db.Column(db.String())
+    # level = db.Column(db.String())
+    beginer = db.Column(db.Boolean)
+    interm = db.Column(db.Boolean)
+    adv = db.Column(db.Boolean)
+    cellphone = db.Column(db.String, unique=True)
     deleted_on = db.Column(db.DateTime, nullable=False)
 
-    def __init__(self, email, enrollment, username, last_name, age, level, cellphone): # begginer, interm, adv,
+    def __init__(self, email, enrollment, username, last_name, age, beginer, interm, adv, cellphone): # level
         self.email = email
         self.enrollment = enrollment
         self.username = username
         self.last_name = last_name
         self.age = age
-        self.level = level
-        # self.begginer = begginer
-        # self.interm = interm
-        # self.adv = adv
+        # self.level = level
+        self.beginer = beginer
+        self.interm = interm
+        self.adv = adv
         self.cellphone = cellphone
         self.deleted_on = datetime.datetime.now()
 

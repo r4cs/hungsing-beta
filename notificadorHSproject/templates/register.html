@@ -75,36 +75,47 @@
 
      </div>
 
-           <br> <p>Desejo receber notificações para aulas de:</p>    <br>
+           <br> <p>Desejo receber notificações para aulas de:</p>
 
-     <div class="form-group">
-         <div class="btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary active">
-            <input type="checkbox" name="check" value="iniciante" checked autocomplete="off"> Iniciante
-          </label>
-          <label class="btn btn-secondary active">
-            <input type="checkbox" name="check" value="interm" checked autocomplete="off"> Intermediário
-          </label>
-          <label class="btn btn-secondary active">
-            <input type="checkbox" name="check" value="adv" checked autocomplete="off"> Avançado
-          </label>
-        </div>
+<!--     <div class="form-group">-->
+<!--         <div class="btn-group-toggle" data-toggle="buttons">-->
+<!--          <label class="btn btn-secondary active">-->
+<!--            <input type="checkbox" name="check" value="iniciante" checked autocomplete="off"> Iniciante-->
+<!--          </label>-->
+<!--          <label class="btn btn-secondary active">-->
+<!--            <input type="checkbox" name="check" value="interm" checked autocomplete="off"> Intermediário-->
+<!--          </label>-->
+<!--          <label class="btn btn-secondary active">-->
+<!--            <input type="checkbox" name="check" value="adv" checked autocomplete="off"> Avançado-->
+<!--          </label>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="check" value="inic" >
+        <label>
+          Iniciante
+        </label>
+       </div>
     </div>
 
-
-<!--<div class="form-check form-check-inline">-->
-<!--        <input class="form-check-input" type="checkbox" value="False">-->
-<!--        <label class="form-check-label" >1</label>-->
-<!--</div>-->
-<!--<div class="form-check form-check-inline">-->
-<!--        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="opcao2">-->
-<!--        <label class="form-check-label" for="inlineCheckbox2">2</label>-->
-<!--</div>-->
-<!--<div class="form-check form-check-inline">-->
-<!--        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="opcao3" disabled>-->
-<!--        <label class="form-check-label" for="inlineCheckbox3">3 (desativado)</label>-->
-<!--</div>-->
-
+    <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="check" value="interm">
+      <label>
+        Intermediário
+      </label>
+    </div>
+  </div>
+              <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="check" value="adv">
+      <label>
+        Avançado
+      </label>
+    </div>
+  </div>
 
          <div class="form-group">
             {{ form.submit(class="btn btn-primary") }}

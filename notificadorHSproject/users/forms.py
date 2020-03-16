@@ -34,11 +34,11 @@ class RegistrationForm(FlaskForm):
     # ],
     #                     validators=[DataRequired()])
 
-    # begginer = BooleanField(u'Iniciante')
-    #
-    # interm = BooleanField(u"Intermediário")
-    #
-    # adv = BooleanField(u"Avançado")
+    begginer = BooleanField(u'Iniciante')
+
+    interm = BooleanField(u"Intermediário")
+
+    adv = BooleanField(u"Avançado")
 
 
     age = SelectField(u'Idade', choices=[

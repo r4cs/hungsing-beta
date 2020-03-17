@@ -27,7 +27,7 @@ def register():
                     last_name=request.form['last_name'],
                     age=request.form['age'],
                     # level=request.form.getlist('check'),
-                    beginer=bool(request.form.get('beginer')),
+                    beginer=bool(request.form.get('inic')),
                     interm=bool(request.form.get('interm')),
                     adv=bool(request.form.get('adv')),
                     cellphone=request.form['cellphone'],
@@ -178,9 +178,9 @@ def del_account():
             last_name=current_user.last_name,
             age=current_user.age,
             # level=request.form.getlist('check'),
-            beginer=request.form.get('beginer'),
-            interm=request.form.get('interm'),
-            adv=request.form.get('adv'),
+            beginer=bool(request.form.get('inic')),
+            interm=bool(request.form.get('interm')),
+            adv=bool(request.form.get('adv')),
             cellphone=current_user.cellphone
         )
 

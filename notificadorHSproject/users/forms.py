@@ -12,20 +12,22 @@ class LoginForm(FlaskForm):
 
     password = PasswordField('Password', validators=[DataRequired()])
 
-    submit = SubmitField('Log In')
+    submit = SubmitField('Entre')
 
 
 class RegistrationForm(FlaskForm):
 
     email = StringField('Email', validators=[DataRequired(), Email()])
 
-    enrollment = IntegerField('Matrícula', validators=[DataRequired()])
+    enrollment = IntegerField('Matrícula', validators=[DataRequired()], render_kw={"placeholder":
+    "Seu número de matrícula Hung Sing"})
 
     username = StringField('Nome', validators=[DataRequired()])
 
     last_name = StringField('Sobrenome', validators=[DataRequired()])
 
-    cellphone = StringField('Celular com DDD', validators=[DataRequired()])
+    cellphone = StringField('Celular com DDD', validators=[DataRequired()], render_kw={"placeholder":
+    "(11)912345678"})
 
     # level = SelectField(u'Nível', choices=[
     #     ('lv1', 'Iniciante'),
@@ -105,7 +107,7 @@ class UpdateUserForm(FlaskForm):
     def check_email(self, field):
         # Check if not None for that user email!
         if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Your email has been registered already!')
+            raise ValidationError('Este email já está registrado')
     #
     # def check_username(self, field):
     #     # Check if not None for that username!

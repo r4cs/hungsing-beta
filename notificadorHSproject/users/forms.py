@@ -61,7 +61,7 @@ class RegistrationForm(FlaskForm):
 
     pass_confirm = PasswordField('Confirmar senha', validators=[DataRequired()])
 
-    submit = SubmitField('Register!')
+    submit = SubmitField('Confirmar!')
 
     def check_email(self, field):
         # Check if not None for that user email!
@@ -78,7 +78,8 @@ class UpdateUserForm(FlaskForm):
     # username = StringField('Nome', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
 
-    cellphone = StringField('Celular com DDD', validators=[DataRequired()])
+    cellphone = StringField('Celular com DDD', validators=[DataRequired()], render_kw={"placeholder":
+    "(11)912345678"})
 
     beginer = BooleanField(u'Iniciante')
 

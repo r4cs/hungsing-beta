@@ -22,7 +22,7 @@ def register():
 
     if current_user.is_authenticated:
         logout_user()
-        return redirect(url_for('core.index'))
+        return render_template('error_pages/404.html'), 404
 
 
     if form.validate_on_submit():

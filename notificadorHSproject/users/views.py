@@ -21,7 +21,7 @@ def register():
     form = RegistrationForm()
 
     if current_user.is_authenticated:
-        logout_user()
+        # logout_user()
         return render_template('error_pages/404.html'), 404
 
 
@@ -71,7 +71,7 @@ def login():
         if user is not None and user.check_password(form.password.data):
             #Log in the user
             login_user(user)
-            flash('Logade com sucesso (;')
+            # flash('Logade com sucesso (;')
 
             # If a user was trying to visit a page that requires a login
             # flask saves that URL as 'next'.

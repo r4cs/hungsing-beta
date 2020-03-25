@@ -22,7 +22,7 @@ def register():
 
     if current_user.is_authenticated:
         logout_user()
-        return redirect(url_for('index'))
+        return redirect(url_for('core.index'))
 
 
     if form.validate_on_submit():

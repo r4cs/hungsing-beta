@@ -69,7 +69,7 @@ def login():
 
     if current_user.is_authenticated:
         # logout_user()
-        flash("Você já está logado!")
+        # flash("Você já está logado!")
         return render_template('error_pages/403.html'), 403
 
     if form.validate_on_submit():
@@ -103,7 +103,7 @@ def login():
 @login_required
 def confirm_email(token):
     if current_user.confirmed:
-        flash("Conta já confirmada. Faça login", 'success')
+        # flash("Conta já confirmada. Faça login", 'success')
         return redirect(url_for('index'))
 
     email = serializer.loads(token, salt=app.config['PASSWORD_SALT'])
@@ -130,7 +130,6 @@ def unconfirmed():
 
     # return render_template('unconfirmed.html')
     # flash('Você precisa confirmar sua conta para ter acesso!', 'warning')
-    time.sleep(3)
     return render_template('unconfirmed.html')
 
 @users.route('/resend')
@@ -139,8 +138,7 @@ def resend_confirmation():
     token = serializer.dumps(current_user.email, salt=app.config['PASSWORD_SALT'])
     link = url_for('users.confirm_email', token=token, _external=True)
     activate_mail(current_user.email, link)
-    flash('Um email de confirmação foi enviado para seu email.', 'success')
-    time.sleep(3)
+    # flash('Um email de confirmação foi enviado para seu email.', 'success')
     return redirect(url_for('users.unconfirmed'))
 
 

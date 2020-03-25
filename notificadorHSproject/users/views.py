@@ -39,18 +39,26 @@ def register():
                     password=request.form['password'],
                     confirmed=False)
 
-        db.session.add(user)
-        db.session.commit()
 
-        token = serializer.dumps(user.email, salt=app.config['PASSWORD_SALT'])
-        link = url_for('users.confirm_email', token=token, _external=True)
-        activate_mail(user.email, link)
+        if User.query.filter_by(enrollment='enrollment').count() > 0:
+            return render_template('error_pages/409.html'), 409
 
-        login_user(user)
+        elif User.query.filter_by(email='email').count() > 0:
+            return render_template('error_pages/409.html'), 409
 
-        #flash('Um email de confirmação foi enviado para seu email.', 'success')
-        #time.sleep(3)
-        return redirect(url_for("users.unconfirmed"))
+        else:
+            db.session.add(user)
+            db.session.commit()
+
+            token = serializer.dumps(user.email, salt=app.config['PASSWORD_SALT'])
+            link = url_for('users.confirm_email', token=token, _external=True)
+            activate_mail(user.email, link)
+
+            login_user(user)
+
+            #flash('Um email de confirmação foi enviado para seu email.', 'success')
+            #time.sleep(3)
+            return redirect(url_for("users.unconfirmed"))
 
 
     return render_template('register.html', form=form)

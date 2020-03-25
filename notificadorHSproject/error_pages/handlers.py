@@ -20,3 +20,13 @@ def error_403(error):
     '''
     # return a tuple!
     return render_template('error_pages/403.html'), 403
+
+@error_pages.app_errorhandler(409)
+def error_409(error):
+    '''
+    Indicates that the request could not be processed because of
+    conflict in the current state of the resource,
+    such as an edit conflict between multiple simultaneous updates.
+    '''
+    # tuple!
+    return render_template('error_pages/409.html'), 409

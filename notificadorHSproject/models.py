@@ -31,7 +31,7 @@ class User(db.Model, UserMixin):
     beginer = db.Column(db.Boolean)
     interm = db.Column(db.Boolean)
     adv = db.Column(db.Boolean)
-    cellphone = db.Column(db.String, unique=True)
+    cellphone = db.Column(db.String)
     password = db.Column(db.String(20))
     password_hash = db.Column(db.String(252))
     registered_on = db.Column(db.DateTime, nullable=False)

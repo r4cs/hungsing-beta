@@ -27,7 +27,7 @@ class RegistrationForm(FlaskForm):
     last_name = StringField('Sobrenome', validators=[DataRequired()])
 
     cellphone = StringField('Celular com DDD', validators=[DataRequired()], render_kw={"placeholder":
-    "(11)912345678"})
+    "ex: 11912345678"})
 
     # level = SelectField(u'Nível', choices=[
     #     ('lv1', 'Iniciante'),

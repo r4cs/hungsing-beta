@@ -20,6 +20,11 @@ users = Blueprint('users', __name__)
 def register():
     form = RegistrationForm()
 
+    if current_user.is_authenticated:
+        logout_user()
+        return redirect(url_for('index'))
+
+
     if form.validate_on_submit():
         user = User(email=request.form['email'],
                     enrollment=request.form['enrollment'],
@@ -66,7 +71,7 @@ def login():
         if user is not None and user.check_password(form.password.data):
             #Log in the user
             login_user(user)
-            flash('Logged in successfully.')
+            flash('Logade com sucesso (;')
 
             # If a user was trying to visit a page that requires a login
             # flask saves that URL as 'next'.
@@ -88,6 +93,7 @@ def confirm_email(token):
     if current_user.confirmed:
         flash("Conta já confirmada. Faça login", 'success')
         return redirect(url_for('index'))
+
     email = serializer.loads(token, salt=app.config['PASSWORD_SALT'])
     user = User.query.filter_by(email=current_user.email).first_or_404()
 

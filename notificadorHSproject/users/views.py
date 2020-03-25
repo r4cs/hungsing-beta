@@ -22,7 +22,7 @@ def register():
 
     if current_user.is_authenticated:
         # logout_user()
-        return render_template('error_pages/404.html'), 404
+        return render_template('error_pages/403.html'), 403
 
 
     if form.validate_on_submit():

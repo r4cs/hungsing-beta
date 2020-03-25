@@ -39,7 +39,6 @@ def register():
                     password=request.form['password'],
                     confirmed=False)
 
-
         if User.query.filter_by(enrollment='enrollment').count() > 0:
             return render_template('error_pages/409.html'), 409
 

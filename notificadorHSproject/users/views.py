@@ -60,6 +60,11 @@ def register():
 def login():
     form = LoginForm()
 
+    if current_user.is_authenticated:
+        # logout_user()
+        flash("Você já está logado!")
+        return render_template('error_pages/403.html'), 403
+
     if form.validate_on_submit():
         # Grab the user from our User Models table
         user = User.query.filter_by(email=form.email.data).first()

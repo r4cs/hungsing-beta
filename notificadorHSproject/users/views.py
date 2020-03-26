@@ -53,7 +53,7 @@ def register():
             link = url_for('users.confirm_email', token=token, _external=True)
             activate_mail(user.email, link)
 
-            login_user(user)
+            login_user(user, remember=True)
 
             #flash('Um email de confirmação foi enviado para seu email.', 'success')
             #time.sleep(3)
@@ -82,7 +82,7 @@ def login():
 
         if user is not None and user.check_password(form.password.data):
             #Log in the user
-            login_user(user)
+            login_user(user, remember=True)
             # flash('Logade com sucesso (;')
 
             # If a user was trying to visit a page that requires a login

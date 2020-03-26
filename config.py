@@ -1,5 +1,6 @@
 import os
 from notificadorHSproject import app
+from datetime import timedelta
 # OBS:
 
 # os.environ.get('') => localiza pela value daqui, que tb eh key quando em exports, ex:
@@ -17,6 +18,7 @@ class BaseConfig(object):
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
     app.config['PASSWORD_SALT'] = os.environ.get('SECURITY_PASSWORD_SALT')
+    app.config['REMEMBER_COOKIE_DURATION'] = timedelta(seconds=40)#(minutes=5)
 
 
     # mail settings

@@ -3,7 +3,7 @@
 import datetime
 import time
 from flask import render_template, url_for, flash, redirect, request, Blueprint
-from flask_login import login_user, current_user, logout_user, login_required
+from flask_login import login_user, current_user, logout_user, login_required, fresh_login_required
 
 from notificadorHSproject import db, app
 from notificadorHSproject.models import User, DelUser
@@ -150,7 +150,8 @@ def logout():
 
 
 @users.route("/account", methods=['GET', 'POST'])
-@login_required
+@fresh_login_required
+# @login_required
 def account():
     form = UpdateUserForm()
 
@@ -182,7 +183,8 @@ def account():
 
 
 @users.route("/del_account", methods=['GET', 'POST'])
-@login_required
+# @login_required
+@fresh_login_required
 def del_account():
     del_form = DeleteUserForm()
 

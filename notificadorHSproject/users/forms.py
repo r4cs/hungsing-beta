@@ -79,7 +79,7 @@ class UpdateUserForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
 
     cellphone = StringField('Celular com DDD', validators=[DataRequired()], render_kw={"placeholder":
-    "(11)912345678"})
+    "ex: 11912345678"})
 
     beginer = BooleanField(u'Iniciante')
 

@@ -2,8 +2,8 @@
 
 import datetime
 import time
-from flask import render_template, url_for, flash, redirect, request, Blueprint
-from flask_login import login_user, current_user, logout_user, login_required, fresh_login_required, login_fresh
+from flask import render_template, url_for, flash, redirect, request, Blueprint, session
+from flask_login import login_user, current_user, logout_user, login_required, fresh_login_required
 
 from notificadorHSproject import db, app
 from notificadorHSproject.models import User, DelUser
@@ -82,6 +82,7 @@ def login():
 
         if user is not None and user.check_password(form.password.data):
             #Log in the user
+            session.permanent=True
             login_user(user, remember=True)
             # flash('Logade com sucesso (;')
 
@@ -184,7 +185,6 @@ def account():
 def del_account():
     del_form = DeleteUserForm()
 
-    if  login_fresh():
 
         if del_form.validate_on_submit():
             del_users = DelUser(

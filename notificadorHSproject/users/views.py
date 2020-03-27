@@ -3,7 +3,7 @@
 import datetime
 import time
 from flask import render_template, url_for, flash, redirect, request, Blueprint
-from flask_login import login_user, current_user, logout_user, login_required, fresh_login_required
+from flask_login import login_user, current_user, logout_user, login_required, fresh_login_required, login_fresh
 
 from notificadorHSproject import db, app
 from notificadorHSproject.models import User, DelUser
@@ -184,23 +184,25 @@ def account():
 def del_account():
     del_form = DeleteUserForm()
 
-    if del_form.validate_on_submit():
-        del_users = DelUser(
-            email=current_user.email,
-            enrollment=current_user.enrollment,
-            username=current_user.username,
-            last_name=current_user.last_name,
-            age=current_user.age,
-            # level=request.form.getlist('check'),
-            beginer=bool(request.form.get('inic')),
-            interm=bool(request.form.get('interm')),
-            adv=bool(request.form.get('adv')),
-            cellphone=current_user.cellphone
-        )
+    if  login_fresh():
 
-        db.session.add(del_users)
-        db.session.delete(current_user)
-        db.session.commit()
-        return redirect(url_for('core.index'))
+        if del_form.validate_on_submit():
+            del_users = DelUser(
+                email=current_user.email,
+                enrollment=current_user.enrollment,
+                username=current_user.username,
+                last_name=current_user.last_name,
+                age=current_user.age,
+                # level=request.form.getlist('check'),
+                beginer=bool(request.form.get('inic')),
+                interm=bool(request.form.get('interm')),
+                adv=bool(request.form.get('adv')),
+                cellphone=current_user.cellphone
+            )
+
+            db.session.add(del_users)
+            db.session.delete(current_user)
+            db.session.commit()
+            return redirect(url_for('core.index'))
 
     return render_template('del_account.html', del_form=del_form)

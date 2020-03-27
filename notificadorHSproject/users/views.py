@@ -186,23 +186,22 @@ def del_account():
     del_form = DeleteUserForm()
 
 
-        if del_form.validate_on_submit():
-            del_users = DelUser(
-                email=current_user.email,
-                enrollment=current_user.enrollment,
-                username=current_user.username,
-                last_name=current_user.last_name,
-                age=current_user.age,
-                # level=request.form.getlist('check'),
-                beginer=bool(request.form.get('inic')),
-                interm=bool(request.form.get('interm')),
-                adv=bool(request.form.get('adv')),
-                cellphone=current_user.cellphone
-            )
+    if del_form.validate_on_submit():
+        del_users = DelUser(
+            email=current_user.email,
+            enrollment=current_user.enrollment,
+            username=current_user.username,
+            last_name=current_user.last_name,                age=current_user.age,
+            # level=request.form.getlist'check'),
+            beginer=bool(request.form.get('inic')),
+            interm=bool(request.form.get('interm')),
+            adv=bool(request.form.get('adv')),
+            cellphone=current_user.cellphone
+        )
 
-            db.session.add(del_users)
-            db.session.delete(current_user)
-            db.session.commit()
-            return redirect(url_for('core.index'))
+        db.session.add(del_users)
+        db.session.delete(current_user)
+        db.session.commit()
+        return redirect(url_for('core.index'))
 
     return render_template('del_account.html', del_form=del_form)

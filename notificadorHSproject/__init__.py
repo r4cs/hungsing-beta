@@ -43,7 +43,7 @@ login_manager.init_app(app)
 
 # Tell users what view to go to when they need to login.
 login_manager.login_view = "users.login"
-login_manager.session_protection = None
+login_manager.session_protection = "strong"
 login_manager.refresh_view = "users.login"
 login_manager.needs_refresh_message = (
     u"Para proteger sua conta, por favor faça login novamente"

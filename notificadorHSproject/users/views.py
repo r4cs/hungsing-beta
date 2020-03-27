@@ -53,7 +53,7 @@ def register():
             link = url_for('users.confirm_email', token=token, _external=True)
             activate_mail(user.email, link)
 
-            login_user(user, remember=True)
+            login_user(user)
 
             #flash('Um email de confirmação foi enviado para seu email.', 'success')
             #time.sleep(3)
@@ -82,7 +82,7 @@ def login():
 
         if user is not None and user.check_password(form.password.data):
             #Log in the user
-            login_user(user, remember=True)
+            login_user(user)
             # flash('Logade com sucesso (;')
 
             # If a user was trying to visit a page that requires a login
@@ -127,8 +127,6 @@ def confirm_email(token):
 def unconfirmed():
     if current_user.confirmed:
         return redirect(url_for('core.index'))
-
-    # return render_template('unconfirmed.html')
     # flash('Você precisa confirmar sua conta para ter acesso!', 'warning')
     return render_template('unconfirmed.html')
 

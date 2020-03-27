@@ -149,7 +149,6 @@ def logout():
 
 @users.route("/account", methods=['GET', 'POST'])
 @fresh_login_required
-# @login_required
 def account():
     form = UpdateUserForm()
 
@@ -181,7 +180,6 @@ def account():
 
 
 @users.route("/del_account", methods=['GET', 'POST'])
-# @login_required
 @fresh_login_required
 def del_account():
     del_form = DeleteUserForm()

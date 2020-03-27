@@ -185,7 +185,6 @@ def account():
 def del_account():
     del_form = DeleteUserForm()
 
-
     if del_form.validate_on_submit():
         del_users = DelUser(
             email=current_user.email,

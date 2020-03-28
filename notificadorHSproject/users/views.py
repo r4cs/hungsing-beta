@@ -158,9 +158,9 @@ def account():
         form.email.data = current_user.email
         current_user.cellphone = form.cellphone.data
         # current_user.level = request.form.getlist('check')
-        current_user.beginer = request.form.get('inic')
-        current_user.interm = request.form.get('interm')
-        current_user.adv = request.form.get('adv')
+        current_user.beginer = bool(request.form.get('inic'))
+        current_user.interm = bool(request.form.get('interm'))
+        current_user.adv = bool(request.form.get('adv'))
         current_user.age = form.age.data
 
         # # current_user.username = form.username.data

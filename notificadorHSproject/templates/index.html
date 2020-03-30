@@ -4,6 +4,14 @@
     <div class="jumbotron">
         <div align='center'>
 
+            {% if current_user.confirmed and  current_user.is_authenticated %}
+            <h3>Bem vindx ao notificador Hung Sing</h3>
+            <br>
+            <p>Você está logado (: </p>
+            <p>Contato: n0t1f1c4d0r@gmail.com</p>
+
+            {% else %}
+
             <h3>Bem vindx ao notificador Hung Sing</h3>
             <br>
             <p>Ao registrar-se você receberá notificações referentes às aulas de luta, bem como quais equipamentos levar.
@@ -11,6 +19,8 @@
             <br>
             <p>Faça login ou registre-se!</p>
             <p>Contato: n0t1f1c4d0r@gmail.com</p>
+
+            {% endif %}
 
         </div>
     </div>

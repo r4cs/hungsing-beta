@@ -39,10 +39,10 @@ def register():
                     password=request.form['password'],
                     confirmed=False)
 
-        if User.query.filter_by(enrollment='enrollment') != None:
+        if User.query.filter_by(enrollment='enrollment') is not None:
             return render_template('error_pages/409.html'), 409
 
-        elif User.query.filter_by(email='email') != None:
+        elif User.query.filter_by(email='email') is not None:
             return render_template('error_pages/409.html'), 409
 
         else:

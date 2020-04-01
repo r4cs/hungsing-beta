@@ -45,19 +45,19 @@ def register():
         # elif User.query.filter_by(email='email') is None:
         #     return render_template('error_pages/409.html'), 409
 
-        else:
-            db.session.add(user)
-            db.session.commit()
+        # else:
+        db.session.add(user)
+        db.session.commit()
 
-            token = serializer.dumps(user.email, salt=app.config['PASSWORD_SALT'])
-            link = url_for('users.confirm_email', token=token, _external=True)
-            activate_mail(user.email, link)
+        token = serializer.dumps(user.email, salt=app.config['PASSWORD_SALT'])
+        link = url_for('users.confirm_email', token=token, _external=True)
+        activate_mail(user.email, link)
 
-            login_user(user, remember=True)
+        login_user(user, remember=True)
 
-            #flash('Um email de confirmação foi enviado para seu email.', 'success')
-            #time.sleep(3)
-            return redirect(url_for("users.unconfirmed"))
+        #flash('Um email de confirmação foi enviado para seu email.', 'success')
+        #time.sleep(3)
+        return redirect(url_for("users.unconfirmed"))
 
 
     return render_template('register.html', form=form)

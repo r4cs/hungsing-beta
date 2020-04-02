@@ -36,6 +36,7 @@ def register():
                     interm=bool(request.form.get('interm')),
                     adv=bool(request.form.get('adv')),
                     cellphone=request.form['cellphone'],
+                    franchise=request.form['franchise'],
                     password=request.form['password'],
                     confirmed=False)
 
@@ -162,6 +163,7 @@ def account():
         current_user.interm = bool(request.form.get('interm'))
         current_user.adv = bool(request.form.get('adv'))
         current_user.age = form.age.data
+        current_user.franchise = form.franchise.data
 
         # # current_user.username = form.username.data
         # current_user.email = request.form['email']
@@ -192,11 +194,11 @@ def del_account():
             username=current_user.username,
             last_name=current_user.last_name,
             age=current_user.age,
-            # level=request.form.getlist'check'),
             beginer=bool(request.form.get('inic')),
             interm=bool(request.form.get('interm')),
             adv=bool(request.form.get('adv')),
-            cellphone=current_user.cellphone
+            cellphone=current_user.cellphone,
+            franchise=request.form['franchise']
         )
 
         db.session.add(del_users)

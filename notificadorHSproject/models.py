@@ -23,32 +23,32 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
-    enrollment = db.Column(db.Integer, unique=True)
+    enrollment = db.Column(db.Integer)
     username = db.Column(db.String(64))
     last_name = db.Column(db.String())
     age = db.Column(db.String())
-    # level = db.Column(db.String())
     beginer = db.Column(db.Boolean)
     interm = db.Column(db.Boolean)
     adv = db.Column(db.Boolean)
     cellphone = db.Column(db.String)
+    franchise = db.Column(db.String())  # new temporary column
     password = db.Column(db.String(20))
     password_hash = db.Column(db.String(252))
     registered_on = db.Column(db.DateTime, nullable=False)
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
 
 
-    def __init__(self, email, enrollment, username, last_name, age, beginer, interm, adv, cellphone,password, confirmed): # level
+    def __init__(self, email, enrollment, username, last_name, age, beginer, interm, adv, cellphone, franchise, password, confirmed):
         self.email = email
         self.enrollment = enrollment
         self.username = username
         self.last_name = last_name
         self.age = age
-        # self.level = level
         self.beginer = beginer
         self.interm = interm
         self.adv = adv
         self.cellphone = cellphone
+        self.franchise = franchise
         self.password = password
         self.password_hash = generate_password_hash(password)
         self.registered_on = datetime.datetime.now()
@@ -75,18 +75,18 @@ class DelUser(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
-    enrollment = db.Column(db.Integer, unique=True)
+    enrollment = db.Column(db.Integer)
     username = db.Column(db.String(64))
     last_name = db.Column(db.String())
     age = db.Column(db.String())
-    # level = db.Column(db.String())
     beginer = db.Column(db.Boolean)
     interm = db.Column(db.Boolean)
     adv = db.Column(db.Boolean)
-    cellphone = db.Column(db.String, unique=True)
+    cellphone = db.Column(db.String(), unique=True)
+    franchise = db.Column(db.String())
     deleted_on = db.Column(db.DateTime, nullable=False)
 
-    def __init__(self, email, enrollment, username, last_name, age, beginer, interm, adv, cellphone): # level
+    def __init__(self, email, enrollment, username, last_name, age, beginer, interm, adv, cellphone, franchise): # level
         self.email = email
         self.enrollment = enrollment
         self.username = username
@@ -97,6 +97,7 @@ class DelUser(db.Model, UserMixin):
         self.interm = interm
         self.adv = adv
         self.cellphone = cellphone
+        self.franchise = franchise
         self.deleted_on = datetime.datetime.now()
 
     def __repr__(self):

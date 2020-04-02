@@ -26,23 +26,6 @@ class RegistrationForm(FlaskForm):
 
     last_name = StringField('Sobrenome', validators=[DataRequired()])
 
-    cellphone = StringField('Celular com DDD', validators=[DataRequired()], render_kw={"placeholder":
-    "ex: 11912345678"})
-
-    # level = SelectField(u'Nível', choices=[
-    #     ('lv1', 'Iniciante'),
-    #     ('lv2', 'Intermediário'),
-    #     ('lv3', 'Avançado')
-    # ],
-    #                     validators=[DataRequired()])
-
-    beginer = BooleanField(u'Iniciante')
-
-    interm = BooleanField(u"Intermediário")
-
-    adv = BooleanField(u"Avançado")
-
-
     age = SelectField(u'Idade', choices=[
         ('ado', '14 a 18 anos'),
         ('jov', '19 a 30 anos'),
@@ -52,6 +35,23 @@ class RegistrationForm(FlaskForm):
     ],
                       validators=[DataRequired()]
                       )
+
+    beginer = BooleanField(u'Iniciante')
+
+    interm = BooleanField(u"Intermediário")
+
+    adv = BooleanField(u"Avançado")
+
+    cellphone = StringField('Celular com DDD', validators=[DataRequired()], render_kw={"placeholder":
+    "ex: 11912345678"})
+
+    franchise = SelectField(u'Unidade', choices=[
+        ('alecr', 'Alecrins'),  ('fds', 'Feira de Santana'),    ('gru', 'Guarulhos'),         ('joinv', 'Joinville'),
+        ('lapa', 'Lapa'),       ('natal', 'Natal'),             ('nv_europa', 'Nova Europa'), ('pac', 'Pacaembu'),
+        ('perd', 'Perdizes'),   ('pin', 'Pinheiros'),           ('tatuape', 'Tatuapé'),         ('vix', 'Vitória')
+    ],
+                            validators=[DataRequired()]
+                            )
 
     password = PasswordField('Senha', validators=[
         DataRequired(),
@@ -87,13 +87,6 @@ class UpdateUserForm(FlaskForm):
 
     adv = BooleanField(u"Avançado")
 
-    # level = SelectField(u'Nível', choices=[
-    #     ('lv1', 'Iniciante'),
-    #     ('lv2', 'Intermediário'),
-    #     ('lv3', 'Avançado')
-    # ],
-    #                     validators=[DataRequired()])
-
     age = SelectField(u'Idade', choices=[
         ('ado', '14 a 18 anos'),
         ('jov', '19 a 30 anos'),
@@ -102,6 +95,14 @@ class UpdateUserForm(FlaskForm):
         ('ido', 'Acima de 60')
     ],
                       validators=[DataRequired()])
+
+    franchise = SelectField(u'Unidade', choices=[
+        ('alecr', 'Alecrins'),  ('fds', 'Feira de Santana'),    ('gru', 'Guarulhos'),         ('joinv', 'Joinville'),
+        ('lapa', 'Lapa'),       ('natal', 'Natal'),             ('nv_europa', 'Nova Europa'), ('pac', 'Pacaembu'),
+        ('perd', 'Perdizes'),   ('pin', 'Pinheiros'),           ('tatuape', 'Tatuapé'),         ('vix', 'Vitória')
+    ],
+                            validators=[DataRequired()]
+                            )
 
     submit = SubmitField('Atualizar')
 

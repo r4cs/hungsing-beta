@@ -198,7 +198,7 @@ def del_account():
             interm=bool(request.form.get('interm')),
             adv=bool(request.form.get('adv')),
             cellphone=current_user.cellphone,
-            franchise=request.form['franchise']
+            franchise=request.form.franchise
         )
 
         db.session.add(del_users)
